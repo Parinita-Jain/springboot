@@ -1,0 +1,91 @@
+One To One Mapping
+
+POST
+localhost:8080/addresses
+
+{	
+	"city":"mumbai",
+	"state":"maharashtra",
+	"zipCode":"400032"
+}
+
+POST
+localhost:8080/users
+
+{
+    "name":"raj",
+    "email":"raj@gmail.com",
+    "password":"abcd1234"
+}
+
+To link the address with the corresponding user,
+
+1. set the url as PUT localhost:8080/users/3/address
+Here we want to update the address for the user with id 3
+
+2. In the headers part, add the key as Content-Type and add the value as text/uri-list
+
+3. In the body part, select raw and text and type http://localhost:8080/addresses/1
+
+Response should be 204, no content
+
+--------------------------------
+One To Many / Many to One
+
+POST
+http://localhost:8080/blogs
+
+{
+	"title":"first blog",
+	"description":"this is my first blog"
+}
+
+To link the blog with the corresponding user,
+
+1. set the url as PUT localhost:8080/blogs/5/user
+Here we want to update the user for the blog with id 5
+
+2. In the headers part, add the key as Content-Type and add the value as text/uri-list
+
+3. In the body part, select raw and text and type http://localhost:8080/users/3
+
+Response should be 204, no content
+
+----------------------------------
+Many to Many
+
+POST
+
+http://localhost:8080/books
+
+{
+    "title":"games of throne",
+    "author":"george r r martin"
+}
+
+To link the books with the corresponding user,
+
+1. set the url as PUT localhost:8080/users/3/likesBook
+Here we want to update the user for the books with id 6 & 7
+
+2. In the headers part, add the key as Content-Type and add the value as text/uri-list
+
+3. In the body part, select raw and text and type 
+http://localhost:8080/books/6
+http://localhost:8080/books/7
+
+Response should be 204, no content
+
+----------------------------------
+Create Projection
+
+To get all user info using projection
+
+http://localhost:8080/users
+
+To get single user info using projection
+
+http://localhost:8080/users/3?projection=userWithAddress
+
+To view all the projection used 
+http://localhost:8080/profile/users
