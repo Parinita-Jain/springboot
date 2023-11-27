@@ -1,0 +1,34 @@
+application.properties file
+
+Properties files are used to keep ‘N’ number of properties in a single file to run the application in a different environment. In Spring Boot, properties are kept in the application.properties file under the classpath.
+
+The application.properties file is located in the src/main/resources directory. The code for sample application.properties file is given below −
+
+server.port=8090
+spring.application.name=Demo
+dbname=sb
+
+We can set properties in this file and can use it in the application using annotation @Value
+
+@Value("${spring.application.name}")
+	private String appName;
+	
+	@Value("${dbname}")
+	private String dname;
+
+If a property is not defined in the properties files and we can set the default value to it following ":"
+
+@Value("${spring.application.name:DemoApp}")
+	private String appName;
+
+---------------------------------------------------------------------------
+
+Set the properties for the application execution, we can create different profiles if the application is suppose to run in different environments
+
+application-prod.properties
+
+Here the profile name is prod
+
+To change the default properties file of the application, stop the application first and then in boot dashboard right-click on the application and select open config, profile drop down list will show the profile, select it and apply. Restart the application
+
+Now the application is using both the files, but if same property is defined in the new profile file then this will override the value set by the default properties file

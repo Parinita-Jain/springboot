@@ -1,0 +1,51 @@
+Spring Boot is not replacing Spring framework, but to make working with Spring Framework faster and easier. Spring Boot provide all the features of the Spring Framework.
+
+Spring MVC (Model, View, Controller) 
+Spring ORM using Hibernate
+Spring Restful API (Model, Controller) ====> important
+
+Feature of SpringBoot
+1. Dependency Injection (Loosely Coupled Application)
+2. Auto-configuration
+3. Embedded Server (Tomcat or Jetty)
+4. Embedded Database (H2 Database)
+5. Starter Code 
+
+Maven Tool
+Build(.jar/.war), publish
+Dependency(pom.xml) 
+
+JAVA_HOME
+
+mvnw spring-boot:run
+
+@SpringBootApplication
+It is the combination of three annotation
+1. @Configuration ===> class file which contains the configuration related business logic eg. Security Configuration
+
+2. @EnableAutoConfiguration ===> Spring Boot to enable auto configuration on the project
+
+3. @ComponentScan ===> Scan for the components in the project
+
+Components are the classes in the application whose instance will not be created by the user, instead the instance of this class will be created by the SpringBoot and added in Spring Container
+Components can also be three types in Spring Boot:
+1. Controller
+2. Service
+3. Repository
+
+Inversion Of Control ===> main feature of Spring framework
+
+@Controller
+class ABC{
+	void X(){
+	}
+}
+
+main()
+{
+	ABC abc = new ABC();  ==> user creating the object of the class, user is controlling the lifecycle of the the object
+	abc.X()
+}
+
+
+

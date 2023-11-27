@@ -1,0 +1,11 @@
+Internationalization
+
+message.properties is the special where we can create the library of the different variables and the value in different language
+
+For every language we will create a message.properties file
+
+message.properties ===> default file for english
+
+message_hi.properties ===> file for hindi language
+
+message_fr.properties ===> file for french langauge

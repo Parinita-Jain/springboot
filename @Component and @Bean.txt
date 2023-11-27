@@ -1,0 +1,39 @@
+using @Component at the class level will add the object of the class in container
+
+@Component (class-level)
+---@Controller
+---@Service
+---@Repository
+
+@Component
+class Student{}
+
+----Create only one object of this class as soon as the application starts--- singleton pattern
+
+prototype pattern ----
+@Component
+@Scope(value = "prototype")
+class Student{}
+
+object of the class will be created when it is referred, here the object is not created when the application starts
+
+
+using @Bean at the method level will add the object of the return-type in container
+
+@Bean(method-level)
+void Student getStudent(){}
+
+@Bean is mostly used to add the object of the classes which we have not created and hence cannot add @Component over those classes
+
+@Bean method can be part of only those classes which are annotated as @Configuration 
+----------------------------
+response
+
+1. JSON 
+2. HTML page
+
+By default when we use the class with the annotation as @Controller, the methods of this class should return String value which is actually a HTML page 
+
+@ResponseBody is used to return not the html page as response instead json data as response
+
+

@@ -1,0 +1,34 @@
+Spring MVC
+
+1. Application need to add the starter, Spring Web and Thymeleaf
+
+2. Create a Controller Class to provide the mapping of the URL that will come as the request from the client
+
+3. Create the method that will actually handle the request, read the data coming along with request and set the response that the view will required and declare the view that needs to send as the response
+
+4. Create the view file (HTML) and we will read the data from the controller and generate the proper HTML file
+
+5. Create the service class that will be the helper class for the controller. The business logic which we will write to play with data will not be written in the controller instead it will be added in the service class
+
+6. Create the Model class is the basically describing all the objects that will be interacting with our project
+
+------------------------------------------
+To Send the Request Data, we can send it as
+
+1. Query String (Parameter)
+
+/delete?id=1
+/delete?id=4
+
+2. Path Variable
+
+/delete/5
+/delete/6
+
+
+
+
+
+
+
+ 

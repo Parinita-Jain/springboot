@@ -1,0 +1,51 @@
+Dependency Injection and Inversion of Control
+
+Inversion of Control ===> transfer the control of object to a container or framework. Giving the control of the object creation to some one else, where programmer is not responsible for creating the object
+
+Dependency Injection ===> Used to implement inversion of control (IOC)
+
+Spring IOC Container ===> Used to implement IOC and contain the objects created
+
+abstact class Processor{
+}
+
+class AMDProcessor extends Processor{
+}
+
+class IntelProcessor extends Processor{
+}
+
+class Laptop{
+	Processor processor = new IntelProcessor();
+}
+
+How To Implement Dependency Injection in Spring Boot?
+1. @Component ===> Used with the class and will indicate to the Spring Boot framework that it has to create the object of this class and put in the container
+
+There are three types of the Components we can create in Spring Boot:
+	a. @Controller
+	b. @Service
+	c. @Repository
+
+2. @ComponentScan ===> Used to scan the project package and find all the class whose object has to be created by the framework when the object will be refered
+
+3. @Configuration ===> Used to mark the class that contains the Bean declarations.
+
+4. @Bean ===> Used over the method that will return the object of the class specified as the return type
+
+5. @Primary ===> Used to mark one bean out of multiple beans as the Primary bean
+
+6. @Qualifier ===> Used to select the bean that will be autowired
+
+7. @Controller ===> Used to create the controller class that will get the request from the URL
+
+8. @RequestMapping ===> Used to map the URL with the method to be implemented
+
+9. @ResponseBody ===> Used to tell the controller that object returned is serialized into JSON and return it as response
+
+------------------------------------------------------------
+Spring MVC
+
+M (Model)
+V (View) ===> HTML + Thymeleaf
+C (Controller) ===> 

@@ -1,0 +1,9 @@
+H2 database can be used to create a baseline for the applications where database is not ready but we want to check some part of the project
+
+H2 database is in memory database where data will exist till the application is running and we will loss this data when we close the application
+
+To use H2 database we need to add the dependency for H2 in the project
+
+Spring JPA dependency will also need to be added in the project to work with the database
+
+Repository is the interface which will contain the method that will be mapped with query to be given to the database
