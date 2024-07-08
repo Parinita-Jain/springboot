@@ -1,0 +1,77 @@
+String & String Handling
+
+String:
+1. Sequence/Array of Character
+2. Class in java.lang package
+
+String Creation:
+1. Using String Literal:
+
+String s = "hello world";
+
+2. Using new keyword to create the instance of the String class
+
+String s = new String("hello world");
+
+------------------------------------------------------
+Memory Management of the Strings
+
+1. Using String Literal
+
+When the string is created using string literal, there is no instance/object of the string created instead the string literal value is stored in a special memory within the heap memory called SCP(String Constant Pool).
+
+If we create one more string using string literal that is already exists in the SCP. JVM will make this new variable refer to the same literal location, new memory will not be allocated.
+
+2. Using String Instance
+
+When the string is created using the String class instance. JVM will allocate separate memory for this instance in the heap memory with the string value. The string literal is also stored in the SCP.
+
+If we create one more String instance with the same value as that of already existing String instance. JVM will allocate new memory location for this instance.
+
+--------------------------------------------------------
+Immutable vs Mutable String
+
+Immutable String is created using the String class instance or String literal.
+
+Immutable means the object value is not changable. That means if we make any changes in the original value, JVM will allocate a new location and save the changed value in it and also change the reference of the variable with the address of the change value location.
+
+Mutable String is created using StringBuffer and StringBuilder class instance
+
+Mutable means the object value can be changed without changing the object location.
+
+1. StringBuffer 
+-added in java 1
+-all the methods are synchronized that means at a time one thread can execute them. No parallel execution is allowed.
+-it is thread-safe
+-less efficient (slower)
+
+2. StringBuilder
+-added in java 5
+-all the methods are non-synchronized that means at a time multiple thread can execute them. Parallel execution is allowed.
+-it is not thread-safe
+-more efficient (faster)
+
+-------------------------------------------------------
+String Comparison
+
+1. == operator
+-return boolean value
+-compare the address of the string variables instead of the value stored at that location
+-returns true if both the string variable are referring to the same location
+
+2. equals()
+-return boolean value
+-compare the value of the string variables irrespective of whether it is literal or string instance
+-returns true if both the string are having same value
+
+3. compareTo()
+-return int value
+-compare the value of the string variables irrespective of whether it is literal or string instance
+-returns 0 if both the string are having same value
+
+----------------------------------------------------
+toString() of the Object class
+
+Used to represent any object of the class as the string
+
+When we print the reference of the object, the toString() method is called if defined in the class of the object

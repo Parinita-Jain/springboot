@@ -1,0 +1,209 @@
+Collection API/Framework
+
+Collection is the group of elements stored as the single unit.
+
+Collection Framework is set of classes and interfaces which  implement different types of the collection.
+
+Collection framework/API consist of:
+1. Collection interface
+2. Map interface 
+3. Iterator interface
+
+This entire framework is part of java.util package.
+
+This framework was added in JDK 1.2, it was not the part of the JDK before 1.2 version. If we wanted to use this collection framework before it was added in the JDK, we used to add this framework as external file/library. 
+
+This external collection framework was made up of some classes and interfaces that has been incorporated in the current collection framework. Some of these classes are Vector, Stack, Hashtable, Properties, Dictionary, Enumeration interface. All these classes or interfaces coming from old collection framework are class legacy classes.
+
+Immutable Objects ==> for every change new memory location is allocated, changes are not reflected in the original location:
+
+1. String 
+2. Wrapper Classes
+3. Legacy Classes
+
+----------------------------------------------------
+Collection Interface
+
+Root interface of the main collection framework. It is inherited by the following interfaces:
+
+1. List
+-elements are stored in the ordered manner. 
+-elements can be accessed using the index number.
+-duplicate values are allowed.
+-implemented by ArrayList, LinkedList, Vector, Stack
+
+2. Set
+-elements are not stored in the ordered manner.
+-elements cannot be accessed using the index number.
+-duplicate values are not allowed.
+-implemented by HashSet, TreeSet
+
+3. Queue (FIFO)
+-elements are not stored in the ordered manner.
+-elements cannot be accessed using the index number.
+-duplicate values are allowed.
+-implemented by PriorityQueue
+
+	Deque
+	-extends the queue interface
+	-in deque, elements can be added and removed from both the ends
+	-in queue, elements are added from one end and removed from the another end
+
+
+---------------------------------------------------
+Generic Collection
+
+Introduced in JAVA SE 5. Collection is made type-safe and this type-safety will be checked at the compile time.
+
+Syntax:
+class<type>, interface<type>
+
+Is mainly used to give the specific to the collection and avoid runtime errors.
+
+----------------------------------------------------
+Map Interface
+
+Elements are stored in key/value pair format.
+
+eg.
+English=90 ==> single element
+key=value
+
+Maths=45
+Science=89
+
+Key part of the Map collection cannot contain duplicates whereas the value part of the Map collection can contain duplicates.
+
+HashMap class does not retain the insertion order.
+
+LinkedHashMap class retain the insertion order.
+
+TreeMap class does not retain the insertion order but the key portion will be sorted.
+
+----------------------------------------------------
+Different ways to traverse through the collection:
+
+Traversing ==> Accessing individual elements of the collection.
+
+1. Normal for loop
+Can be used only for list as here we will using the index number to access the elements of the collection
+
+2. Enhanced for loop
+Can be used for any collection but only for reading the elements and not for manipulating
+
+3. Iterator Interface
+Can be used for any collection and can be used to read and manipulate the elements of the collection
+We can create the instance of the Iterator using iterator() method on the collection. This iterator will read the values only in one direction.
+
+4. ListIterator Interface
+It extends Iterator interface. Can be used only for List collection.
+We can create the instance of the ListIterator using listIterator() method on the collection. This iterator can be used to traverse the collection in both directions.
+
+5. forEach() method
+Added in Java 8. It is defined for both Stream interface and Iterable interface.
+
+---------------------------------------------------------
+Enumeration interface
+
+Used to iterator the elements of the legecy collection classes.
+Most of its functionality is replaced by the iterator interface.
+To create enumeration, we use elements() method on the collection
+
+--------------------------------------------------------
+Comparable and Comparator interface  ===> used for sorting 
+
+1. Comparable Interface
+
+Used to order the objects of the class but using only one attribute at a time. This interface is already implemented by String and Wrapper Classes.
+
+So if we want to sort the objects of the user-defined class, that class should also implement Comparable interface and override the method compareTo()
+
+Problem with the Comparable interface is if we want to sort according to the multiple attribute/properties of the class we will have keep on changing the logic of the compareTo() method of the class and recompile it.
+
+This interface is part of java.lang package.
+
+2. Comparator interface
+
+Used to sort the objects of the class using multiple attributes.
+
+For each attribute to be used for sorting we will create a separate class and this class needs to implement Comparator interface and write the sorting logic in compare() method.
+
+This interface is part of java.util package.
+
+-----------------------------------------------------
+Till we have seen two types of the interface:
+1. Extended Interface ==> one interface extends another interface
+2. Marker Interface ==> empty interface, Serializable
+
+FunctionalInterface ==> contains only one method declaration
+
+@FunctionalInterface annotation is added in java 8. It is used to just check by the compiler whether or not interface is really a functional interface
+
+Implement the Functional Interface:
+1. Creating a normal class and making this class implement the functional interface so that this class can override the single method of the functional interface
+2. Creating an anonymous class 
+3. Creating a lamdba expression
+
+-----------------------------------------------------
+Lambda Expression
+
+Lambda Expressions were introducted in java 8. Used to provide the implementation to the functional interface without specifying the name of the method of the functional interface.
+
+Syntax:
+
+parameter -> expression body
+
+parameter ==> will match with parameter declared for the method of the functional interface
+expression body ==> actual implementation of the functional interface method
+
+1. If the functional interface as no-argument function, then while creating the lambda expression for this function, you will have indicate no parameter will empty parenthesis:
+
+	() -> {expression body};
+
+2. If there only one statement in the lambda expression body then you can skip the curly braces
+
+	() -> expression statement;
+
+3. If the functional interface has one parameter function, then while creating the lambda expression for this function, you can skip the parenthesis and can specify only the parameter name
+
+	a -> expression body;
+
+4. If the functional interface has a function with more than one parameter, then while creating the lambda expression for this function, you will have specify the equal number of the parameter
+
+	(a,b) -> expression body;
+
+5. If the function of the functional interface has only one statement that return the value, you can skip the return keyword also.
+
+	(a,b) -> return value; ====> (a,b) -> value;
+
+------------------------------------------------------------------
+Stream API
+
+Is added in Java 8 under the package java.util.stream. Is used to some operations on the collection.
+
+Stream of i/o is different from this stream of the stream API
+
+Here stream is sequence of the objects that support different methods. These methods can be pipelined to produce the result.
+
+If you have collection of some string values, then the stream created on this collection will be nothing but the sequence of the string values from this collection.
+
+Stream cannot store elements, your element are stored in the collection
+
+You can pipeline the operations on the stream. Pipelining means you can perform different operation on the stream where one operation's result will become another operation's input
+
+Eg. you have stream of the string values, first you have pipelined that you want to convert the values into uppercase and then filter the value that contains 'A' in them and lastly print the filtered values
+
+1. original string values will be converted into uppercase
+2. this uppercase output will be filtered
+3. this filtered values will be printed
+
+filter => return a stream of the element that matches the given criteria
+
+map => return a stream of the element that is the result of the change
+
+forEach => print the stream elements
+
+Types of stream:
+1. Sequential Stream: individual element of the sequence will be worked on one after the another. The sequence of the output can be predicated. Implementation is slower. 
+2. Parallel Stream: multiple element of the stream will be worked on at the same time. The sequence of the output cannot be predicted. Implementation is faster.
+

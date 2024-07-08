@@ -1,0 +1,121 @@
+Exception Handling
+
+Error: Anything wrong in the program which is not allowing the program to give result as per the expectations.
+
+Types of Errors:
+1. Syntax Errors/Compilation Error/Compile-Time Error:
+
+Identified by the compiler, programmer has to rectify the code to remove these error. If not rectified compiler will not create/update class file which will be actually executed by the client.
+
+2. Runtime Errors:
+
+Identified by the JVM, and by default JVM will handle these errors by stopping the execution of the program at the statement where the error is found.
+
+3. Logical Errors:
+
+Actual output is not matching with the excepted output. Programmer has to recheck the logic of the program.
+
+----------------------------------------------------------
+In Java, while executing the program we might encounter Errors and Exceptions.
+
+Runtime Errors: Are to be handled by the JVM only because these errors are mostly related to the system or the resource for which the programmer cannot do the handling. For eg, OutOfMemoryError. All the Runtime Error Classes are the subclasses of the Error Class.
+
+Exception: Can be handled by JVM or programmer. For eg. ArithmeticException that will occur if the number is divided by zero. All the Exception classes are the subclasses of the Exception Class.
+
+Both Error and Exception has a common parent class, ie. Throwable class
+
+Object ==> Throwable ==> Error ==> All Error Classes
+		     ==> Exception ==> All Exception Classes
+
+---------------------------------------------------------
+Exceptions/Errors being handled by the JVM:
+1. JVM will identify the Error/Exception class based in the criteria.
+2. JVM will create/raise the object of the class eg. OutOfMemoryError, ArithmeticException
+3. JVM will throw this object.
+4. If there no programmer code written for catching/handling, the JVM itself will catch it and handle it by specifying the exception details and stop the execution of the program at the problematic statement.
+
+------------------------------------------------------
+Exceptions being handled by the Programmer:
+1. JVM will identify the Error/Exception class based in the criteria.
+2. JVM will create the object of the class eg. OutOfMemoryError, ArithmeticException
+3. JVM will throw this object.
+4. Now the programmer with write the catch code, which will be executed if the Exception occurs in the program.
+
+-------------------------------------------------------
+try..catch block:
+
+Syntax:
+try{
+	//program statements where the exception might occur
+}
+catch(Reference Variable of the Exception class){
+	//handling code
+}
+
+try block statements will be always executed, catch block statements will be executed only if there the exception occuring in the try block 
+
+try block can be associated with multiple catch blocks, at a time of the execution only one catch block will be executed. This catch will be associated to the exception that has occurred in the try block. When the exception is encountered in the try block, JVM will search the catch blocks sequencially and when it finds the matching catch block it will handover the exception object to the corresponding catch block. 
+
+We can also include the common catch block having Exception class reference so that any Exception can be handled that is not otherwise handled the their own catch block.
+
+Also make sure that this common catch block is coming as the last catch block. If we add it at start or in the middle, it will handle all the exceptions in the try block and the catch after it will never be executed.
+
+-----------------------------------------------------------
+Types of Exceptions:
+1. Checked Exceptions: Exceptions that will occur at the program execution, but the compiler will raise error if the statement where the checked exception might occur is not enclosed within the try..catch block or indicated using throws keywords. Here the compiler is aware about the exception that might occur during the statement execution.
+
+2. Unchecked Exceptions: Runtime Exceptions that will occur at the program execution, the compiler will not raise any error if the statement where the unchecked exception might occur is not enclosed within the try..catch block or indicated using throws keywords because the compiler is not aware about this exception at the compile time.
+
+Exception  =====> RuntimeException (Unchecked)
+			=====> IOException
+			=====> SQLException
+
+---------------------------------------------------------
+throws Keyword
+
+Is used to declare in the method signature that the method might throw an exception. It is to tell the caller of the method about the exceptions that might occur by the method call so that the caller can handle it.
+
+Syntax:
+
+access_specifier return_type method_name(parameter_list)
+throws ExceptionNames{
+}
+
+---------------------------------------------------------
+throw Keyword
+
+Is used to create the object of the exception class based on some user-defined condition and throw it. Ideally this task is done by the JVM based on predefined conditions. But as the programmer we want that the exception class objects be also created on some other conditions. So if want to create the exception and throw it.
+
+Syntax:
+throw instance of the exception class;
+
+---------------------------------------------------------
+User-defined Exceptions
+
+We can also create a new Exception class, for which any class to be called the exception class needs to inherit from the Exception class. This user-defined exception class is always checked exception. 
+
+---------------------------------------------------------
+finally Keyword
+
+Syntax:
+try{
+	//statement where exception might occur
+}
+catch(){
+	//statement will be executed if the exception occurs in the try block
+}
+finally{
+	//statement will be executed irrespective of whether the exception occurs or not
+}
+
+finally block is used to do the cleanup task, eg close the file, close the database connection. It is an optional block.
+
+--------------------------------------------------------
+Is it possible to create the try block without catch block? If yes then how?
+
+-------------------------------------------------------
+final keyword ==> associated with the class, method or variable 
+
+finally block ==> associated with exception handling where the statement within the block will be execution irrespective of the exception occuring or not
+
+finalize() method ==> this method is part of the Object class which will be called automatically when the object of the class is deleted from the memory by the garbage collector. This method is called before the object is deleted. This method does not delete the object, the object is deleted by garbage collector.

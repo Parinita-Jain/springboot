@@ -1,0 +1,661 @@
+Object - Oriented Programming
+
+Procedural Programming
+Here we write the procedure/functions on how to get the things done.
+
+OOP
+Here we will take into consideration not just how the things are done but also the data involved in the functionality. Functionality will vary as per the data.
+
+The main advantages of the OOPs are:
+1. Breaking the program in the smaller parts(objects), separation of the concerns.
+2. Hiding the data and the functionality of the system.
+
+Features of OOPs:
+1. Object ===> design
+2. Class ===> implementation
+3. Inheritance (extends/implements)
+4. Polymorphism (static => overloading / dynamic => overriding)
+5. Encapsulation (access modifier, public methods)
+6. Abstraction (abstract class / interface)
+
+------------------------------------------------------
+Object is a real world entity.
+
+Each object will have:
+1. state/data  ===> properties  ===> variables
+2. behaviour ===> methods
+
+Person1 ===> me
+name: ekwinder
+age: 34
+phone: 8495649568
+email: ek@gmail.com
+eat()
+sleep()
+walk()
+
+Person2 ===> you
+name: sweta
+age: 20
+phone: 9468845784
+email: sweta@gmail.com
+eat()
+sleep()
+walk()
+
+Person3 ===> you
+name: lakhan
+age: 21
+phone: 4598748570
+email: lakhan@gmail.com
+eat()
+sleep()
+walk()
+
+Conceptually we will think of the solution from the object perspective but while actually programming / implementing that solution we will create a blueprint of these objects known as CLASS in OOPs.
+
+Class: Is a template, blueprint of the object
+
+Object: Is created from the class, you can create any number of objects from the class. Object are also known as instance(example). The process of creating the object from the class is known as instantiation.
+
+OOP is focused on reusable code. We will define only class which is replicated for each object. This concept is known as DRY (Don't Repeat Yourself).
+
+-----------------------------------------------------
+Create the class
+
+Syntax:
+class ClassName{
+		//state (variables/attributes)
+		//behaviour (functions/methods)
+}
+
+variable ==> store the data
+function ==> perform some operation on this data
+
+Conventions (they are some standard agreed upon by the programmer to make programming easy and understandable, convention are not rule that has to followed)
+
+1. For naming the class, we use PascalCase where first letter of each word in the class name is in uppercase and rest all letters are in lowercase
+
+class StudentProject
+
+2. For naming the variables and functions of the class, we use camelCase where first word is completely in lowercase and from second word onward we follow PascalCase
+
+void getMarks()
+void getTotalScore()
+
+int dateOfBirth;
+
+--------------------------------------------------------
+Create the object
+
+ClassName objectvariable = new ClassName();
+
+new ClassName() ===> this statement will actually create the object in the memory.
+
+objectvariable ===> will be used to identify the object. Is also known as reference variable 
+
+int a = 10;
+
+eg.
+
+Person p1 = new Person();
+Person p2 = new Person();
+
+new Person(); ===> if only this statement is written without associating it with the objectvariable then this object cannot be used again in the program.
+
+Person p1 ===> p1 is the variable that will identify some object of the class Person because its datatype has been specified as Person
+
+If we want to refer the state and the behaviour of the class, we will be using objectvariable that is identifying the object followed by a period(.) and then the state or behaviour required.
+
+-------------------------------------------------
+Methods/Functions
+
+Divide the complex program in the smaller chunks using methods which are also reused.
+
+How Method works:
+
+1. Declare the method
+
+Syntax:
+access_specifier return_type method_name(parameters) ==> method signature
+{
+	code block ===> executable statements
+}
+
+In a class, method is declared along with the body (implementation), code block. This code block we will executed when the method is called.
+
+parameter are optional, a method can have zero or more parameters. While declaring the method, we specify the number of parameter and the datatype of each parameter. While calling the method, the values has to be passed to each parameter declared and the value that will be passed should be of the same datatype as declared.
+
+return_type specifies the type of the value that the method will return to the caller. If the return_type is specified as void, then the method will not return anything to the caller.
+
+If the return_type is specifies as any other datatype, then the method has to return the value to the caller based on this type using return statement.
+
+return statement will return the value to the caller and also the control of the execution back to the caller. This statement should be written as the last statement of the method body.
+
+2. Call the method
+
+Syntax:
+
+objectvariable.method_name(arguments)
+
+if parameter are defined with the method, then the values will have to be passed to the method as the arguments
+
+When the method is called, the current method execution will be paused and the control be passed to the called method. After the code block of the called method is executed completely, the call will return back to the caller method and the remaining statements of the current method will be completed.
+
+------------------------------------------------------------------
+Variable Length Argument(VarArgs)
+
+If we want to pass multiple values to the method, we can create an array, fill the array and then pass this array as the argument. The method that will accept this array should have been defined with the array parameter.
+
+We can also pass multiple values by declaring the parameter of the method as varargs parameter using three periods (...) with the datatype of the parameter. Here the array is created for these arbitrary values implicitly.
+
+-----------------------------------------------------------------
+Polymorphism (poly ==> many, morph ==> forms)
+
+Types of Polymorphism:
+1. Static/Compile-Time Polymorphism ==> method overloading/constructor loading
+2. Dynamic/Runtime Polymorphism ==> method overriding & inheritance
+
+Method Overloading
+Giving the method name more than one form. Meaning we can define the methods with same name but different parameter list.
+
+display(int)   ===> display(8)
+display(float) ===> display(56.45f)
+display(String) ==> display("hello")
+
+Here I can say, display method is overloaded.
+
+Method will be called overloaded if it follows following rules:
+1. Methodname should be same.
+2. Parameter datatype is different even if the number of parameter is same.
+	int,int
+	float,float
+	char,char
+3. Just changing the return type will not make the method overloaded.
+4. Parameter number is different
+	int,int
+	int,int,int
+5. Sequence of the datatype of the parameter can be changed.
+	int,float
+	float,int
+ 
+Method overloading is called compile-time polymorphism because the method linking is done at the compile time by compiler and same method is called at the runtime, no change are done by the JVM.
+
+---------------------------------------------------
+Constructor
+
+Is a special method that is called when the object of the class is created.
+
+new ClassName(); ===> its a call to the constructor
+
+Constructor will same name as that of the class it is declared for and will not have the return-type.
+
+class Student{
+	Student(){}
+}
+
+There are three types of the constructors that can exists within the clas in java:
+1. Default Constructor: If we, programmers don't declare any constructor for the class, the compiler will create the constructor for this class. The constructor created by compiler is no-arg/zero parameter constructor. This constructor will initialize the uninitialized variables of the class with the default values.  
+
+				default value
+boolean				false
+byte,short,int		0
+long				0L
+float				0.0f
+double				0.0d
+char				'\u0000'
+String, Object		null
+
+Programmer can also declare the constructor of the following two types. When the programmer declares the constructor, the default constructor will not be created by the compiler. 
+ 
+2. No-arg Constructor:
+Is declared by programmer that takes no arguments.
+
+3. Parameterized Constructor:
+Is declared by programmer that takes one or more arguments
+
+-----------------------------------------------------
+Constructor Overloading
+
+Just like method overloading where the method name is same but the parameter list is different, we can also overload the constructor of the class where we can declare multiple constructors but with different parameter list.
+
+-----------------------------------------------------
+this keyword
+Refers to the current object
+
+1. Calling one constructor from the another constructor in the same class. But make sure that this call is the first statement of the caller constructor.
+2. If the constructor or method parameter names are same as that of the class variable, we can use this keyword to distinguish between the class variable and parameter name by applying this keyword to the class variable.
+3. Can also be used to call the method of the same class.
+
+----------------------------------------------------
+Modifier:
+Special keyword that can be associated with the class, variables, methods or constructor to give them meaning.
+
+Types of modifiers:
+1. Access modifiers: Used to set the access level of the class, variable, method or constructor
+
+	default: this is just a access level that will be assigned if no other access modifier is used. the elements of the default access level are accessible only within the same package.
+
+	public: accessible to all. in single .java file we cannot define multiple public classes. for each public class there should its own .java file.
+
+main classes(which contains the main method) cannot be defined as private or protected
+
+	private: accessible only within the class that it is declared in.
+	protected: by default, protected members are accessible within the same package just like default. protected members can be accessible in the different package if the class in the package is inheriting this class containing protected members.
+
+private ---> default ---> protected ---> public 
+
+only within the class ---> only within the same package ---> only within the same package + different package if inherited ---> all
+
+2. Non-access modifiers:
+	static
+	final
+	abstract
+	transient (serialization)
+	synchronized (thread)
+
+-----------------------------------------------------
+Packages
+
+Container/Folder the group the related types (class/interface)
+
+Types of Package:
+1. Builtin packages
+2. User-defined packages
+
+User-defined Package:
+define package as the first statement of the .java file. So that when the code is compiled, a folder with the package is created if it doesn't exists or the same folder is used, and now .class file will be placed in this folder
+
+Syntax:
+package packagename;
+
+package basic;
+
+package com.itvedant.student;
+package com.itvedant.faculty;
+
+While naming the package we follow the convention wherein all the letters of the packagename has to be in lowercase.
+
+Use the class files of the package in another package:
+Using import statement we can import the entire package or specific class or interface from the package.
+
+Import entire package:
+import com.itvedant.student.*;
+This statement will import all the classes and interfaces in the student package
+
+Import specific classes/interfaces
+import com.itvedant.student.Student;
+This statement will import only Student class from the package
+
+------------------------------------------------------------
+static modifier
+
+Used with variables and method, but not with class. Can be used with the class, if the class is the nested class.
+
+Static attributes and methods are accessible without creating the instance/object of the class. They are common for all the object if created. They are accessed using the class reference.
+
+If we want to access the static members in the different class then we use the classname as the reference, but if we want to access the static members from the same class then we can skip the classname reference and can directly access the static members.
+
+Static method can access static variable/method directly but in order to access non-static variable/method we have to create the object and access it.
+
+Only one copy of the static variable is created for the class where individual copy of the non-static variable is created for the objects
+
+----------------------------------------------------
+Dynamic Memory Allocation
+Heap space is used for dynamic memory allocation for Java object. New objects are always created in the heap spaces and the references to this objects are stored in the stack memory. 
+
+Garbage Collection
+A process executed by JVM to clear the heap memory of the unreferred objects. This process is called garbage collection process done by garbage collector. It makes sure that the heap memory has as much free space as possible.
+
+This process helps JVM to determine which memory is no longer being used and to recycle this memory for other uses. When we run any program JVM also execute a method gc() to start the garbage collection.
+
+finalize() method
+The java.lang.Object.finalize() method is called by the garbage collector on the object which is to be deleted from the memory. This method is also know as the destructor method in Java. We can add deinitialization code in this method.
+
+---------------------------------------------------------------
+Inheritance
+
+Used for reusability, one class members (attributes and methods) are inherited by another class. In Java, inheritance is implemented using extends keyword
+
+This reusable term is used in oops in the context of the class, method and inheritance
+
+1. class once defined is used to create multiple objects.
+2. method once defined can be called multiple times.
+3. class once defined can be used to define another class without declaring its attributes and methods again and again.
+
+In inheritance, there will be atleast two classes involved:
+1. Parent/Super/Base Class: this class will have the attributes and method that will be inherited.
+2. Child/Sub/Derived Class: this class will inherit the parent class
+
+What is not inherited?
+1. private member of the class, default member are inheritable only within the same package.
+2. static member of the class
+3. constructor of the class
+
+Protected and public members of the class are inherited by all the other classes irrespective of the package
+
+Types of inheritance:
+1. Single Inheritance: only one parent class and only one child class
+
+A ==> B
+
+2. Multilevel Inheritance: one parent class inherited by the child class which is inherited by its own child class and so on.
+
+A ==> B ==> C ==> D ==> .....
+
+3. Hierarchical Inheritance: one common parent class of multiple child classes
+
+A ==> B
+  ==> C
+  ==> D
+
+4. Hybrid Inheritance: mix of all the above inheritance
+
+A ==> B ==> C
+	==> D
+
+There is one more type of inheritance called multiple inheritance which is not implemented using class instead using interface
+
+----------------------------------------------------------
+Constructors in Inheritance
+
+Parent class constructor is not inherited by the child class. But the parent class constructor is called when we call the child class constructor.
+
+If we have not created constructor for parent class or child class, the compiler will create the default constructor. In the case of child class constructor, the first statement will be to call the parent class constructor.
+
+If the programmer creates the child class constructor, again the compiler will add the first statement in this constructor too to call the parent class constructor. The statement using which the parent class constructor is called will include super keyword.
+
+super() ==> this is by default the first line of all the constructors, this line is added by the compiler. this line will always come as the first line in the constructor
+
+If the parent class contains no no-arg/default constructor and only parameterized constructor then we need to call the parent class constructor explicitly with values
+
+------------------------------------------------------------
+Method Overriding
+
+Redeclaring the parent class method in the child class with a new implementation
+
+Rules of Overriding
+1. Method name should be same in both the classes, parent and child class.
+2. Parameter list should also be same in both the classes.
+3. Access of the method cannot be reduced.
+public -> protected -> default -> private  ===> not allowed
+
+When we override the method in the child class, the new implementation of the child class will be executed now if call the method on the instance of the child class. But whatif we want the parent class implementation should also executed, we can call the parent class method using super keyword from the child class implementation
+
+@Override Annotation --> This annotation is not compulsary to perform overriding. But if used on the overriden method, the compiler will check if the method is following all the rules of the overriding and will give an error if they are not been followed
+
+The actual purpose is to identify the override method in the class.
+
+-----------------------------------------------------------
+Dynamic Polymorphism
+
+We have already implemented two forms of polymorphism using method overloading and constructor overloading.
+
+Dynamic Polymorphism is implemented using method overriding, where call to the overridden method is resolved at the runtime rather than at compile-time.
+Runtime JVM will decide which method to call
+
+To perform dynamic polymorphism two things are important:
+1. parent class method should be overridden in the child class.
+2. parent class reference is used to refer the object of the child class while calling the overridden method.
+
+----------------------------------------------------------
+Upcasting
+
+Typecasting child class object into the parent class object. Upcasting is mostly done implicitly by compiler.
+
+If we define methods in the child class, they are not known to the parent class. So when we perform upcasting and try to call the child class method using parent class reference, we will get a compile-time error.
+
+----------------------------------------------------------
+Downcasting
+
+Typecasting parent class object into the child class object. Downcasting is always done explicitly by the programmer. Downcasting is mostly implemented when the method of the child class is to be referred using the parent class reference. Here parent class referred is downcasted forcefully into child class. But if this downcasting is not possible the JVM will throw ClassCastExecption error.
+
+-------------------------------------------------
+Final modifier
+
+Used with class, method, variable
+
+Final Class: cannot be inherited
+Final Method: cannot be overridden
+Final Variable: value once assigned cannot be changed. The value can be initialized at the time of the variable declaration or in the constructor. The convention to name the final variable is to define all the letter in uppercase
+
+---------------------------------------------------------
+
+Encapsulation and Abstraction these terms are referring the data or method hiding which is one of the main features of the OOPs.
+
+---------------------------------------------------------
+Encapsulation
+
+Wrapping the attributes (variables) and methods together in a class as the single unit. 
+
+Attributes and some methods of the class are hidden from the end-user using access-modifiers like private, default and protected. But we want to provide the access to these hidden member we can do it using public methods.
+
+--------------------------------------------------------
+Abstraction
+
+Hiding the implementation details and showing only the functionality that is required by the user. In abstraction, the accessibility will be changed based on the level of the abstraction.
+
+While implementating abstraction we will first identify all the common functionalities at the first level of the abstraction and then will add more functionality as the level of the abstraction will increase.
+
+Abstraction is implemented using:
+1. abstract class
+2. interfaces
+
+--------------------------------------------------------
+Abstract Modifier 
+
+Used to create the abstract classes and abstract methods.
+
+Abstract class will have the common functionality defined which will be used by other classes using inheritance.
+
+Rules of abstract class:
+1. declared abstract using abstract modifier
+2. cannot be instantiated (cannot create the object of this class)
+3. can contain abstract and non-abstract methods
+
+Rules of abstract method:
+1. declared abstract using abstract modifier
+2. cannot have method body
+3. can exists only in the abstract class
+4. in the class the inherits the abstract class, all the abstract methods has to be overridden or else declare the class itself as abstract.
+
+------------------------------------------------------
+Interfaces
+
+Interface is also template but of the class
+
+Fully abstract is a class that contains only abstract methods
+
+Interface is like the fully abstract class but defined using the interface keyword
+
+Syntax:
+interface InterfaceName{
+	
+}
+
+InterfaceName will follow the same convention as that of the classname.
+
+Rules of interface:
+1. cannot create the instance of the interface
+2. cannot contain the constructor
+3. all the methods are public and abstract
+4. all the variables/attributes are public, static and final, it short all the variable inside the interface are constants
+5. is not extended using extends, instead its is implemented using implements keyword
+6. one class can implement more than one interface
+7. all the method of the interface has to overridden in the class that implements it
+
+Multiple inheritance is implemented using interfaces in Java
+
+--------------------------------------------------------------
+Object Class
+
+Object is available in java.lang package. Every class is java extends this class if it is not extending any other class.
+
+------------------------------------------------------------
+New feature Added in the interface
+
+Till Java 7, all the methods declared inside the interface were by default abstract and public.
+
+If the method is abstract, it means when the interface is implemented by some class, we will need to override this method and provide the implementation code. 
+
+Java 8 ---> In interface, we can create default and static methods:
+
+1. default: method defined within the interface but with their own implementation code. Now this method might or might not be overridden in the child class. We declare the method as default inside the interface using default keyword.
+
+2. static: method defined within the interface with their own implementation and are declare as static using static keyword. These static methods of the interface can be accessed using the interface reference
+
+Java 9 ---> In interface, we can create private methods.
+
+Till Java 8, all the methods, be it abstract, default or static are by default given public access modifier.
+
+Private method inside the interface are not accessible outside the interface, they are accessed only within the default or static methods of the interface.
+
+Normal private method is accessible only from default method of the interface and not from static method
+
+Static private method is accessible from both default method and static method of the interface
+
+---------------------------------------------------------------
+Nested Class
+
+Class created inside the another class
+
+Two Parts:
+1. Inner Class
+2. Outer Class
+
+class Student{
+	private int rollNo;
+	private String name;
+
+	class Address{
+		String addressLine1;
+		String addressLine2;
+		String city;
+		String state;
+		int pinCode;
+	}
+}
+
+Advantage of Nested Classes:
+1. Used to develop more readable and understandable code.
+2. Inner class can access all the members of the outer class. Inner class can even access the private members of the outer class and hence can also be used for implementing encapsulation.
+
+
+Anonymous Class
+
+Class without any name (nameless class)
+
+Mostly used for implementing the interfaces or extending the abstract class without creating a subclass
+
+Syntax:
+
+new AbstractClassName/InterfaceName(){
+};
+
+In creating the anonymous class, we are combine the class creation and the instance creation of this class
+---------------------------------------------------------
+Implementating Functional Interfaces
+
+Functional Interface is the interface that declares only one method. To enforce the rules of the Functional Interface we can annotate it with the annotation @FunctionalInterface
+
+Three ways to provide the implementation to the method declared inside the functional interface
+
+1. Create a subclass and implement the method of the interface
+2. Create an anonymous class and implement the method of the interface
+3. From Java 8 onwards, we can use lambda expressions to implement the functional interface
+
+--------------------------------------------------------
+Lambda Expression
+
+Useed to implement only the functional interface and not the interfaces containing more than one method declaration.
+
+Here there is no need to create a class (subclass/anonymous), we will provide only the implementation of the method of the interface.
+
+Syntax:
+(arguments) -> {body}
+
+arguments ==> the value to be passed while calling the function. For no-arg arg function, no value will be passed
+->(arrow-head) ==> link arguments with the body/implementation of the function
+body ==> actual implementation of the function
+
+Here we never specify the name of the method while providing the implementation as we know there is only one method in the interface.
+
+1. no-arg method
+
+interface A{
+	void display();
+}
+
+A a1 = () -> {
+	body
+};
+
+
+2. one-arg method
+
+interface A{
+	void display(int i);
+}
+
+A a1 = i -> {
+	body
+};
+
+Only if the method is one-arg method we can skip the parenthesis
+
+3. two-arg or more method
+
+interface A{
+	void display(int i, int j);
+}
+
+A a1 = (i,j) -> {
+	body
+};
+
+4. method with return
+
+interface A{
+	int display(int i);
+}
+
+A a1 = (i,j) -> {
+	body
+	return val;
+};
+
+If the method body is just returning the value and there no other statement except return statement, then we can skip the curly braces and the return keyword.
+
+interface A{
+	void display(int i);
+}
+
+A a1 = i -> val;
+
+-----------------------------------------------------------
+Nested Interface
+
+We can declare interface also inside another class or interface
+
+Nested interface are always declared as the static member of the class or interface.
+
+interface A{
+	interface B{}
+}
+
+If nested inside the another interface, then this interface is not just static but also public
+
+class A{
+	interface B{}
+}
+
+If nested inside the another class, then this interface is static and can have any access modifier
+
+---------------------------------------------------------
+
+
+
+
+
+
+

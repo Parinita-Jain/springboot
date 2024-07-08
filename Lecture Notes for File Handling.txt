@@ -1,0 +1,82 @@
+Files
+
+Are the named locations that can be used to store related information.
+
+------------------------------------------------------
+Read and Write from the file
+
+We use the Stream class to implement read and write operation on the file
+
+Stream Classes will access the I/O stream that Java provides to read and write from any source. Source can be network, file, thread, console, etc.
+
+I/O stream that will perform read and write uses the sequence of the data. Means data will read/write from the file either byte-by-byte/character-by-character.
+
+Types of Stream
+1. Byte Stream: Read/Write data in byte format
+FileInputStream ==> Read   ===>source: file
+FileOutputStream ==> Write ===>destination: file
+
+Byte Stream class will be mostly used to read and write from the non-textual files. Its not like we cannot use these classes for read/write in the textual, just that Character Stream provides better support for reading/writing in textual files
+
+2. Character Stream: Read/Write data in character format
+FileReader ==> Read
+FileWriter ==> Write
+
+All the I/O classes are part of java.io package.
+------------------------------------------------------
+
+File Writing
+
+If the file does not exists in the path specified then a new file will be created and the content will be written in that file
+
+If the file exists, by default the already existing content of the file will be deleted first(truncated) and then new content will be written in the file
+
+If we want to retain the older content and add new content after it, we need to enable appending
+
+To enable appending, set the append variable to true in FileOutputStream or FileWriter constructor
+
+------------------------------------------------------
+Serialization
+
+Process of converting the object-state (object + values of the attributes of the object) into byte stream is called Serialization. ObjectOutputStream class has a method writeObject() which is used to perform Serialization
+
+By default in Java we cannot Serialize the object of the class unless the class implement a marker interface called Serializable.
+
+Serializable interface is marker interface means it is an empty interface with no method to be overridden.
+
+Process of converting the byte-stream data into object-state is called Deserialization. ObjectInputStream class has a method readObject() which is used to perform Deserialization.
+
+transient modifier is used to specify the field/attributes of the class that should not be Serialized. When the object the deserialized the value of this field will be set to the default
+
+------------------------------------------------------
+Wrapper Classes
+
+Object oriented interface for the primitive data types.
+
+It is possible to convert the primitive data type values into objects and also to convert objects into primitive data type values.
+
+Primitive --> Object --> Wrapping(Boxing)
+Object --> Primitive --> Unwrapping(Unboxing)
+
+If boxing is done by the compiler then it is called autoboxing. If unboxing is also done by compiler then it is called auto-unboxing.
+
+All the wrapper classes are part of java.lang package
+
+int			Integer
+byte		Byte
+short		Short
+long		Long
+float 		Float
+double		Double
+boolean		Boolean
+char		Character
+
+The wrapper classes are required mostly for saving the data in the collection as, the collection api supports only objects and not primitive datatypes.
+
+
+
+
+
+
+
+
